@@ -10,6 +10,6 @@ export const routes: Routes = [
     loadChildren: () => import('./core/sport.routes')
   },
   {
-    path: '*', redirectTo: ''
+    path: '**', redirectTo: ''
   }
 ];
