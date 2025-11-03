@@ -9,15 +9,31 @@
         <input type="password" class="input" placeholder="Password" formControlName="password" />
       </fieldset>
     </div>
-    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary mb-4 cursor-pointer">Get
+    <button type="submit" [disabled]="loginForm.invalid || loading()" class="btn btn-primary mb-4 cursor-pointer">Get
       Started</button>
   </form>
-</div>
 
-@if (errorMessage()) {
-<div class="toast toast-top toast-end">
-  <div class="alert alert-info">
-    <span>{{errorMessage()}}</span>
+
+  <!-- @if (errorMessage()) {
+  <div class="toast toast-top toast-end">
+    <div class="alert alert-info">
+      <span>{{errorMessage()}}</span>
+    </div>
   </div>
+  } -->
+  @if (errorMessage()) {
+  <div class="toast toast-top toast-end transition-opacity duration-500">
+    <div class="alert alert-error shadow-lg">
+      <span>{{ errorMessage() }}</span>
+    </div>
+  </div>
+  }
+
+  <!--Mientras loading sea true cargar el spinner-->
+  <!-- OVERLAY DE CARGA (centrado en pantalla) -->
+  @if (loading()) {
+  <div class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+    <span class="loading loading-spinner text-info w-16 h-16"></span>
+  </div>
+  }
 </div>
-}

@@ -41,10 +41,17 @@ export class Authentication {
       },
       error: (err) => {
         console.error('❌ Error en login:', err);
-        this.errorMessage.set(err.error?.error || 'Error al iniciar sesión');
+        //this.errorMessage.set(err.error?.error || 'Error al iniciar sesión');
+        this.mostrarErrorTemporal(err.error?.error || 'Error al iniciar sesión');
         this.loading.set(false);
       },
       complete: () => this.loading.set(false)
     });
+  }
+
+
+  private mostrarErrorTemporal(msg: string) {
+    this.errorMessage.set(msg);
+    setTimeout(() => this.errorMessage.set(''), 4000);
   }
 }
