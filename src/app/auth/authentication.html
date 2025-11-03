@@ -1,0 +1,23 @@
+<div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl border-amber-500 border-2">
+  <form (ngSubmit)="login()" [formGroup]="loginForm" autocomplete="off">
+    <div class="card-body">
+
+      <fieldset class="fieldset">
+        <label class="label">Nombre</label>
+        <input type="text" class="input" placeholder="Nombre" formControlName="username" />
+        <label class="label">Password</label>
+        <input type="password" class="input" placeholder="Password" formControlName="password" />
+      </fieldset>
+    </div>
+    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary mb-4 cursor-pointer">Get
+      Started</button>
+  </form>
+</div>
+
+@if (errorMessage()) {
+<div class="toast toast-top toast-end">
+  <div class="alert alert-info">
+    <span>{{errorMessage()}}</span>
+  </div>
+</div>
+}
