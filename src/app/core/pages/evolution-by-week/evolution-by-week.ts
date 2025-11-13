@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './evolution-by-week.css'
 })
 export class EvolutionByWeek {
-
+  readonly pageTitle = 'Evolución semanal';
 }

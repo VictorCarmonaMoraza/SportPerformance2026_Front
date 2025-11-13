@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class EvolutionByMonth {
 
+  readonly pageTitle = 'Evolución mensual';
 }
