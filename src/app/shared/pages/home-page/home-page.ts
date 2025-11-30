@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit, signal } from '@angular/core';
 import { Authentication } from "../../../auth/authentication";
+
+
 
 @Component({
   selector: 'app-home-page',
@@ -8,6 +9,10 @@ import { Authentication } from "../../../auth/authentication";
   templateUrl: './home-page.html',
   styleUrl: './home-page.css'
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  title = signal<string>('')
 
+  ngOnInit(): void {
+    this.title.set('SportPerformance');
+  }
 }

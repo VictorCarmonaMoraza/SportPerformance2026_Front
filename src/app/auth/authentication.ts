@@ -12,6 +12,7 @@ import { Auth } from '../auth-service/auth';
 })
 export class Authentication {
   readonly #authService = inject(Auth);
+  hasError = signal(false);
   readonly router = inject(Router);
   readonly fb = inject(FormBuilder);
 
@@ -20,28 +21,36 @@ export class Authentication {
   errorMessage = signal('');
 
   loginForm: FormGroup = this.fb.group({
-    username: ['', Validators.required],
+    username: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(4)]],
   });
 
-  login() {
-    if (this.loginForm.invalid) return;
+  onSubmit() {
+    if (this.loginForm.invalid) {
+      this.hasError.set(true);
+      setTimeout(() => this.hasError.set(false), 2000);
+      this.loginForm.reset();
+      return;
+    }
+
+    //Si todo va bien
+    const { username = '', password = '' } = this.loginForm.value;
+    console.log({ username, password })
 
     this.loading.set(true);
     this.errorMessage.set('');
 
-    const { username, password } = this.loginForm.value;
 
     this.#authService.login(username!, password!).subscribe({
       next: (res) => {
         console.log('✅ Login correcto:', res);
         localStorage.setItem('token', res.token);
         localStorage.setItem('user', JSON.stringify(res.usuario));
+        //Navegamos a la ruta de la informacion del usaurio
         this.router.navigate(['/sportPerformance']);
       },
       error: (err) => {
         console.error('❌ Error en login:', err);
-        //this.errorMessage.set(err.error?.error || 'Error al iniciar sesión');
         this.mostrarErrorTemporal(err.error?.error || 'Error al iniciar sesión');
         this.loading.set(false);
       },
@@ -50,8 +59,8 @@ export class Authentication {
   }
 
 
-  private mostrarErrorTemporal(msg: string) {
-    this.errorMessage.set(msg);
+  private mostrarErrorTemporal(msgError: string) {
+    this.errorMessage.set(msgError);
     setTimeout(() => this.errorMessage.set(''), 4000);
   }
 }
