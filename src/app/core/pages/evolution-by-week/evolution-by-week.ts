@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ChartComponent } from "../../../shared/components/Chart/chart/chart";
 
 @Component({
@@ -8,5 +8,5 @@ import { ChartComponent } from "../../../shared/components/Chart/chart/chart";
   styleUrl: './evolution-by-week.css'
 })
 export class EvolutionByWeek {
-  readonly pageTitle = 'Evolución semanal';
+  readonly pageTitle = input.required<string>();
 }

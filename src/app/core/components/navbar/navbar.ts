@@ -10,15 +10,11 @@ import { Router, RouterLink, RouterOutlet } from "@angular/router";
 export class Navbar {
   router = inject(Router);
 
-
   exit() {
     //Eliminamos localstorage
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.router.navigate(['/']);
-
-
-
   }
 
 }
