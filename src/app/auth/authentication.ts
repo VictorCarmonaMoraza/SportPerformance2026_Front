@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Auth } from '../auth-service/auth';
 
 @Component({
@@ -47,7 +47,7 @@ export class Authentication {
         localStorage.setItem('token', res.token);
         localStorage.setItem('user', JSON.stringify(res.usuario));
         //Navegamos a la ruta de la informacion del usaurio
-        this.router.navigate(['/sportPerformance']);
+        this.router.navigate(['info/sportPerformance/user-sport']);
       },
       error: (err) => {
         console.error('❌ Error en login:', err);

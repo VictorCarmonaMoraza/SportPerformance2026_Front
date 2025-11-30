@@ -22,7 +22,7 @@
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li><a routerLink="user-sport">Item 1</a></li>
+      <li><a routerLink="sportPerformance/user-sport">Item 1</a></li>
       <li>
         <details>
           <summary>Parent</summary>
@@ -32,10 +32,11 @@
           </ul>
         </details>
       </li>
-      <li><a routerLink="training-metrics">Item 3</a></li>
+      <li><a routerLink="sportPerformance/training-metrics">Item 3</a></li>
     </ul>
   </div>
-  <!-- <div class="navbar-end">
-    <a class="btn">Button</a>
-  </div> -->
+  <div class="navbar-end">
+    <a class="btn btn-secondary" (click)="exit()">Logout</a>
+  </div>
+
 </div>
