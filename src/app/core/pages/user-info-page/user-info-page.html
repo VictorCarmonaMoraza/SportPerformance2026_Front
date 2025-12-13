@@ -1,69 +1,49 @@
-<div class="h-auto w-auto">
-  <section class="flex gap-6 flex-wrap w-full">
-    <div class="card flex-1 bg-blue-500 pt-5 shadow-sm">
-      <div>
-        <img src="assets/images/user.png" alt="Victor" class="w-40 h-auto rounded-xl object-contain mx-auto" />
-      </div>
-      <div class="card-body">
-        <h2 class="card-title">Victor Manuel Carmona Moraza</h2>
-        <p>🏋️ Entrenamiento de fuerza y resistencia</p>
-        <p><strong>Edad:</strong> 29 años</p>
-        <p><strong>Progreso:</strong> +12% rendimiento</p>
-        <!-- <div class="card-actions justify-end">
-              <button class="btn btn-primary">Buy Now</button>
-            </div> -->
-      </div>
-    </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-    <div class="card flex-1 bg-emerald-500 pt-5 shadow-sm">
-      <app-evolution-by-week [pageTitle]="'Grafica semanal actual'" />
-    </div>
+  <!-- Monthly Progress -->
+  <div class="rounded-xl p-3 bg-gradient-to-br from-purple-500 to-blue-500 shadow-lg">
+    <h3 class="text-white text-xl font-semibold">Monthly Progress</h3>
 
-    <div class="card flex-1 bg-fuchsia-400 pt-5 shadow-sm">
-      <app-evolution-by-month [pageTitle]="'Evolución mensual actual'" />
+    <div class="h-60 flex items-center justify-center text-white opacity-60">
+      <app-evolution-by-month />
     </div>
+  </div>
 
-    <div class="card flex-1 bg-amber-200 pt-2 shadow-sm">
-      <app-evolution-by-year [pageTitle]="'Evolución anual actual'" />
+  <!-- Weekly Frequency -->
+  <div class="rounded-xl p-3 bg-gradient-to-br from-teal-400 to-sky-500 shadow-lg">
+    <h2 class="text-white text-xl font-semibold">Weekly Frequency</h2>
+
+    <div class="h-60 flex items-center justify-center text-white opacity-60">
+      <app-evolution-by-week />
     </div>
-  </section>
+  </div>
 
+  <!-- Training Volume -->
+  <div class="rounded-xl p-3 bg-gradient-to-br from-orange-400 to-yellow-500 shadow-lg">
+    <h2 class="text-white text-xl font-semibold mb-3">Training Volume(sumatorio de peso en los entrenamiento)</h2>
 
-  <section class="flex gap-6 flex-wrap w-full pt-4">
-    <div class="card flex-1 bg-blue-500 pt-5 shadow-sm">
-      <div>
-        <img src="assets/images/objetivos.jpg" alt="Shoes" class="w-60 rounded-xl object-contain mx-auto" />
-      </div>
-      <!--TD-DO: Se convertira en un formulario para recojer datos para los obejetivos-->
-      <div class="card-body">
-        <h2 class="card-title">Objetivos</h2>
-        <!--select-->
-        <select class="select select-error">
-          <option disabled selected>Tipo de objetivo</option>
-          @for (objetivo of listaObjetivos(); track objetivo) {
-          <option>{{ objetivo }}</option>
-          }
-        </select>
-        <!---->
-        <p>🏋️ Entrenamiento de fuerza y resistencia</p>
-        <p><strong>Edad:</strong> 29 años</p>
-        <p><strong>Progreso:</strong> +12% rendimiento</p>
-        <!-- <div class="card-actions justify-end">
-          <button class="btn btn-primary">Buy Now</button>
-        </div> -->
-      </div>
+    <div class="text-6xl font-bold text-white">4320 <span class="text-4xl">kg</span></div>
+    <p class="text-white mt-2 opacity-80">Total Lifted</p>
+  </div>
+
+  <!-- Anual -->
+  <div class="rounded-xl p-3 bg-gradient-to-br from-orange-500 to-yellow-400 shadow-lg">
+    <h2 class="text-white text-xl font-semibold ">Evolucion Anual</h2>
+
+    <div class="h-60 flex items-center justify-center text-white opacity-60">
+      <app-evolution-by-year />
     </div>
+  </div>
 
-    <div class="card flex-1 bg-amber-500 pt-5 shadow-sm">
-      <app-evolution-by-week [pageTitle]="'Grafica semanal pasada'" />
-    </div>
+  <!-- Habits Right -->
+  <div class="rounded-xl p-3 bg-gradient-to-br from-blue-500 to-indigo-500 shadow-lg">
+    <h2 class="text-white text-xl font-semibold">Habits</h2>
 
-    <div class="card flex-1 bg-neutral-400 pt-5 shadow-sm">
-      <app-evolution-by-month [pageTitle]="'Evolución mensual pasada'" />
+    <div class="space-y-2 text-white">
+      <!-- <p class="flex items-center gap-2 text-lg">🌙 6.8 h</p>
+      <p class="flex items-center gap-2 text-lg">✔️ 3 / 4</p>
+      <p class="opacity-80 text-sm">Completed</p> -->
     </div>
+  </div>
 
-    <div class="card flex-1 bg-amber-300 pt-2 shadow-sm">
-      <app-evolution-by-year [pageTitle]="'Evolución anual pasada'" />
-    </div>
-  </section>
 </div>

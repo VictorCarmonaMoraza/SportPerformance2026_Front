@@ -1,10 +1,4 @@
 <div class="flex justify-center items-center">
-  <app-chart [typeGraph]="'line'" />
-</div>
-<div class="card-body">
-  <h2 class="card-title">{{pageTitle()}}</h2>
-  <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-  <!-- <div class="card-actions justify-end">
-        <button class="btn btn-primary">Buy Now</button>
-      </div> -->
+  <!-- <app-chart [typeGraph]="'line'" [data]="monthYear" [dataSerie]="dataSerieYear" [options]="optionY()" /> -->
+  <app-chart [options]="optionY" />
 </div>
